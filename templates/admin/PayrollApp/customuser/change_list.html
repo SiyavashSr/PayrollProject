@@ -1,0 +1,12 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  <li>
+	<a href="{% url 'admin:customuser_upload_excel' %}" class="button" style="background:#28a745; color:white; border-radius:5px; padding:5px 10px;">
+      📄 بارگذاری فایل اکسل
+    </a>
+  </li>
+{% endblock %}
+

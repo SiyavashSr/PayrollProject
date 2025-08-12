@@ -1,0 +1,28 @@
+<h2>ورود با شماره موبایل</h2>
+
+<form method="post">
+  {% csrf_token %}
+
+  <div>
+    {{ form.phone_number.label_tag }}<br>
+    {{ form.phone_number }}
+  </div>
+
+  {% if not phone_stage %}
+    <div>
+      {{ form.code.label_tag }}<br>
+      {{ form.code }}
+    </div>
+    <button type="submit" name="verify_code">تایید کد</button>
+  {% else %}
+    <button type="submit" name="send_code">ارسال کد</button>
+  {% endif %}
+</form>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}

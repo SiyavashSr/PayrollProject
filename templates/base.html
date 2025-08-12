@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
+    <!-- Webpage Title -->
+    <title>{% block title %}سامانه جامع کارکنان {% endblock %}</title>
+    
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+	<link href="{% static 'PayrollApp/css/bootstrap.css' %}" rel="stylesheet">
+	<link href="{% static 'PayrollApp/css/fontawesome-all.css' %}" rel="stylesheet">
+	<link href="{% static 'PayrollApp/css/swiper.css' %}" rel="stylesheet">
+	<link href="{% static 'PayrollApp/css/magnific-popup.css' %}" rel="stylesheet">
+	<link href="{% static 'PayrollApp/css/styles.css' %}" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" type="image/png" href="{% static 'PayrollApp/images/favicon.png' %}">
+
+
+
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container">
+            
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Pavo</a> -->
+
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="{% url 'dashboard' %}"><img src="{% static 'PayrollApp/images/logo.svg' %}" alt="alternative"></a> 
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link page-scroll"><i class="fas fa-user"></i> سلام، {{ user.full_name|default:user.phone_number }} خوش آمدید </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'dashboard' %}"><i class="fas fa-home"></i> داشبورد</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'change_password' %}"><i class="fas fa-key"></i> تغییر رمز عبور</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> خروج</a>
+                    </li>
+					{% endif %}
+                </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					{% if messages %}
+					{% for message in messages %}
+						{{ message }}
+					{% endfor %}
+				{% endif %}
+				</div>
+			</div>
+			{% block content %}
+			{% endblock %}
+        </div> <!-- end of container -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    	
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+</html>

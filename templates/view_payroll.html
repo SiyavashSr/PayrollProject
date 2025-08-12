@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+
+{% for pay in payrolls %}
+<h3>فیش حقوقی ماه {{ pay.month }}</h3>
+<table border='1'>
+  <tr>
+    <th>month</th>
+    <th>base_salary</th>
+    <th>tax</th>
+	<th>total_received</th>
+  </tr>
+  <tr>
+    <td>{{ pay.month }}</td>
+    <td>{{ pay.base_salary }}</td>
+    <td>{{ pay.tax }}</td>
+	<td>{{ pay.total_received }}</td>
+  </tr>
+</table>
+{% endfor %}
+<BR>
+<button type="submit" class="btn-solid-lg"  onclick="window.print()">چاپ فیش حقوقی</button>
+<a class="btn-solid-lg" href="{% url 'select_month' %}">بازگشت</a>
+</div>
+{% endblock %}
