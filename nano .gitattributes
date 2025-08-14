@@ -1,0 +1,6 @@
+# Force GitHub linguist to detect Python as main language
+*.py linguist-detectable=true
+*.css linguist-detectable=false
+*.html linguist-detectable=false
+*.js linguist-detectable=false
+*.md linguist-detectable=false
